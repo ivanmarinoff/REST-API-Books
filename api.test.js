@@ -68,4 +68,19 @@ describe("Books API Tests", () => {
             });
     });
 
+    
+
+    it("should Delete a book", (done) => {
+        const bookId = 1;
+        chai.request(server)
+          .delete(`/books/${bookId}`)
+          .end((err, resp) => {
+            if (err) {
+              return done(err);
+            }
+            expect(resp.statusCode, "Status code").to.equal(204);
+            done();
+          });
+      });
+
 });
